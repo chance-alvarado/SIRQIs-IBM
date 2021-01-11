@@ -94,7 +94,7 @@ The population, infection, and testing dynamics can be modified to represent a p
 |days_till_results|list of float/int|[0, 1]|Zero-indexed discrete probability distribution of days between testing and receiving results (i.e being eligible for retesting or being moved to isolation).
 
 
-#### Isolation Parameers
+#### Isolation Parameters
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
 |days_in_isolation|int|8|Number of days until an individual is released from isolation.
@@ -133,16 +133,6 @@ Once parameters have been specified in the `SIRQIs/parameters.py` file, simulati
 
 Upon completion of a run, a number-suffixed folder specified by the **main_results_dir** and **batch_dir** parameters will be generated. This folder contains the following:
 
-<p align="center">
-  <img src="/resources/media/example_run.png"><br>
-  <b>An example CSV file showing the results of a single simulation</b><br>
-</p>
-
-<p align="center">
-  <img src="/resources/media/example_summary_plot.png"><br>
-  <b>An example summary plot highlighting average trajectories among all simulations in batch</b><br>
-</p>
-
 - `parameters_copy.py`
   - A complete copy of the parameters used for this simulation run.
   
@@ -150,8 +140,22 @@ Upon completion of a run, a number-suffixed folder specified by the **main_resul
   - Each run file represents the result of a single simulation. Each row represents the number of individuals present in each state (column) at the specified day. The number of run files present is dependent on the **num_runs** parameter in the `parameters.py` file.
   
 - `summary_plot.png`
-  - A simple plot summarizing the number of individuals in each state by day. Individual trajectories are plotted with a lower opacity while the average trajectory among all situations is emphasized.
+  - A simple plot summarizing the number of individuals in each state by day. Individual trajectories are plotted with a lower opacity while the average trajectory among all situations is emphasized. Use this plot to get a rough idea of the results before more in-depth analyses are conducted.
   
+<br />
+<p align="center">
+  <img src="/resources/media/example_run.png"><br>
+  <b>An example CSV file showing the results of a single simulation</b><br>
+</p>
+<br />
+<br />
+<p align="center">
+  <img src="/resources/media/example_summary_plot.png"><br>
+  <b>An example summary plot highlighting average trajectories among all simulations in batch</b><br>
+</p>
+
+Use popular Python packages such as [Pandas](https://pandas.pydata.org/), [Matplotlib](https://matplotlib.org/), or [Seaborn](https://seaborn.pydata.org/) to further analyze results from SIRQIs!
+
 ---
 
 ### License
