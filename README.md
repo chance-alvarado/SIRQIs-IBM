@@ -131,6 +131,27 @@ Once parameters have been specified in the `SIRQIs/parameters.py` file, simulati
 
 ### Understanding the Results <a name="results"></a>
 
+Upon completion of a run, a number-suffixed folder specified by the **main_results_dir** and **batch_dir** parameters will be generated. This folder contains the following:
+
+<p align="center">
+  <img src="/resources/media/example_run.png"><br>
+  <b>An example CSV file showing the results of a single simulation</b><br>
+</p>
+
+<p align="center">
+  <img src="/resources/media/example_summary_plot.png"><br>
+  <b>An example summary plot highlighting average trajectories among all simulations in batch</b><br>
+</p>
+
+- `parameters_copy.py`
+  - A complete copy of the parameters used for this simulation run.
+  
+- `run_#####.csv`
+  - Each run file represents the result of a single simulation. Each row represents the number of individuals present in each state (column) at the specified day. The number of run files present is dependent on the **num_runs** parameter in the `parameters.py` file.
+  
+- `summary_plot.png`
+  - A simple plot summarizing the number of individuals in each state by day. Individual trajectories are plotted with a lower opacity while the average trajectory among all situations is emphasized.
+  
 ---
 
 ### License
