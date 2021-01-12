@@ -5,7 +5,7 @@
 ##### Written by Chance Alvarado: [LinkedIn](https://www.linkedin.com/in/chance-alvarado/), [GitHub](https://github.com/chance-alvarado)
 
 ##### Explore the full repository [here](https://github.com/chance-alvarado/SIRQIs-IBM).
-![Case Map](/resources/media/header.jpg)
+![Case Map](/SIRQIs/resources/media/header.jpg)
 
 Image courtesy of [Unsplash](https://unsplash.com/photos/gf6UDwpl0ac).
 
@@ -28,7 +28,7 @@ SIRQIs is an individual or [agent-based model](https://en.wikipedia.org/wiki/Age
 
 <br />
 <p align="center">
-  <img src="/resources/media/viral_load_curve.png"><br>
+  <img src="/SIRQIs/resources/media/viral_load_curve.png"><br>
   <b>Unique viral load curves are generated for each individual</b><br>
 </p>
 <br />
@@ -127,7 +127,7 @@ Once parameters are tuned to your scenario save `parameters.py` in its original 
 Once parameters have been specified in the `SIRQIs/parameters.py` file, simulations can be run by doing the following:
 
 <p align="center">
-  <img src="/resources/media/terminal.gif"><br>
+  <img src="/SIRQIs/resources/media/terminal.gif"><br>
   <b>Running SIRQIs in terminal</b><br>
 </p>
 
@@ -152,13 +152,13 @@ Upon completion of a run, a number-suffixed folder specified by the **main_resul
   
 <br />
 <p align="center">
-  <img src="/resources/media/example_run.png"><br>
+  <img src="/SIRQIs/resources/media/example_run.png"><br>
   <b>An example dataframe showing the results of a single simulation</b><br>
 </p>
 <br />
 <br />
 <p align="center">
-  <img src="/resources/media/example_summary_plot.png"><br>
+  <img src="/SIRQIs/resources/media/example_summary_plot.png"><br>
   <b>An example summary plot highlighting average trajectories among all simulations in batch</b><br>
 </p>
 
