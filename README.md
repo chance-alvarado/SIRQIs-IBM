@@ -26,10 +26,12 @@ Image courtesy of [Unsplash](https://unsplash.com/photos/gf6UDwpl0ac).
 
 SIRQIs is an individual or [agent-based model](https://en.wikipedia.org/wiki/Agent-based_model#In_epidemiology) of disease spread. Compared to [traditional compartment models](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology) where individuals are lumped together as they transition states, each member of the sample population is uniquely represented (as objects of the custom *Individual* class). This technique allows each simulated individual to have unique progressions of infection, contact patterns, and testing history. Individuals probabilistically transition to different states (**s**usceptible, **i**nfected, **r**ecovered, **q**uarantined, and **is**olated) based on rules that are tuned through modification of the `parameters.py` file.
 
+<br />
 <p align="center">
   <img src="/resources/media/viral_load_curve.png"><br>
-  <b>An example dataframe showing the results of a single simulation</b><br>
+  <b>Unique viral load curves are generated for each individual</b><br>
 </p>
+<br />
 
 A core component of SIRQIs is the concept of each individual having a unique viral load curve. An individual's viral load curve determines the progress of infection as well as their detectable window. The concept and construction method of viral load curves was borrowed from [Larremore *et al.* (2020)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7325181/).
 
@@ -165,6 +167,9 @@ Use popular Python packages such as [Pandas](https://pandas.pydata.org/), [Matpl
 ---
 
 ### License
+
+This repo is licensed under the MIT license.
+
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ---
