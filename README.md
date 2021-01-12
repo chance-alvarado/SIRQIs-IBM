@@ -1,6 +1,6 @@
 # SIRQIs Individual-based Model of Disease
 
-### An model for the spread of COVID-19 in a closed, fully-mixed population where surveillance testing, quarantine, and isolation are the primary sources of mitigation. 
+### A model for the spread of COVID-19 in a closed, fully-mixed population where surveillance testing, quarantine, and isolation are the primary sources of mitigation. 
 
 ##### Written by Chance Alvarado: [LinkedIn](https://www.linkedin.com/in/chance-alvarado/), [GitHub](https://github.com/chance-alvarado)
 
@@ -24,8 +24,14 @@ Image courtesy of [Unsplash](https://unsplash.com/photos/gf6UDwpl0ac).
 
 ### How SIRQIs Works <a name="introduction"></a>
 
+SIRQIs is an individual or [agent-based model](https://en.wikipedia.org/wiki/Agent-based_model#In_epidemiology) of disease spread. Compared to [traditional compartment models](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology) where individuals are lumped together as they transition states, each member of the sample population is uniquely represented (as objects of the custom *Individual* class). This technique allows each simulated individual to have unique progressions of infection, contact patterns, and testing history. Individuals probabilistically transition to different states (**s**usceptible, **i**nfected, **r**ecovered, **q**uarantined, and **is**olated) based on rules that are tuned through modification of the `parameters.py` file.
 
+<p align="center">
+  <img src="/resources/media/viral_load_curve.png"><br>
+  <b>An example dataframe showing the results of a single simulation</b><br>
+</p>
 
+A core component of SIRQIs is the concept of each individual having a unique viral load curve. An individual's viral load curve determines the progress of infection as well as their detectable window. The concept and construction method of viral load curves was borrowed from [Larremore *et al.* (2020)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7325181/).
 
 ---
 
@@ -145,7 +151,7 @@ Upon completion of a run, a number-suffixed folder specified by the **main_resul
 <br />
 <p align="center">
   <img src="/resources/media/example_run.png"><br>
-  <b>An example CSV file showing the results of a single simulation</b><br>
+  <b>An example dataframe showing the results of a single simulation</b><br>
 </p>
 <br />
 <br />
