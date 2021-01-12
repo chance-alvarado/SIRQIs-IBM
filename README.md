@@ -41,7 +41,7 @@ A core component of SIRQIs is the concept of each individual having a unique vir
 
 SIRQIs is an individual-based model of disease developed completely in [Python](https://www.python.org/). Since disease and interaction dynamics are enacted at the individual-level across large batches of simulations **ensure you have proper computational resources and time**. SIRQIs will also automatically produce many results files when run. **Be sure to have ample storage on your device to store simulation results**. Download or clone this repository [here](https://github.com/chance-alvarado/SIRQIs-IBM).
 
-The contents of this repository were written and have been tested with [Python 3.7.4](https://www.python.org/). SIRQIs makes used of the follwoing standard libraries:
+The contents of this repository were written and have been tested with [Python 3.7.4](https://www.python.org/). SIRQIs makes used of the following standard libraries:
 
 Library | 
 --------|
@@ -92,13 +92,13 @@ The population, infection, and testing dynamics can be modified to represent a p
 |infectious_threshold|int/float|6|Minimum log 10 of viral load needed for an individual to be infectious.
 |probability_infection_given_contact|float|0.5|probability of an individual being infected given contact with an infectious individual.
 |probability_outside_infection|float|0.001|Probability of an individual being infected from outside the population.
-|daily_contacts_distributions|list of int/float|[0, 0.5, 0.5]|Zero-indexed discrete probability distribution of number of contacts and individual has per day. Elemenets of daily_contacts_distribution should sum to 1.
+|daily_contacts_distributions|list of int/float|[0, 0.5, 0.5]|Zero-indexed discrete probability distribution of number of contacts and individual has per day. Elements of daily_contacts_distribution should sum to 1.
 
 #### Testing Parameters
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
 |proportion_tested_daily|float|1/14|Fraction of eligible individuals to be randomly selected for testing per day.
-|detectable_threshold|int/float|4| Minimum log 10 of viral load need for an individual to be detected positivie.
+|detectable_threshold|int/float|4| Minimum log 10 of viral load need for an individual to be detected positive.
 |days_till_results|list of float/int|[0, 1]|Zero-indexed discrete probability distribution of days between testing and receiving results (i.e being eligible for retesting or being moved to isolation).
 
 
@@ -114,15 +114,15 @@ The population, infection, and testing dynamics can be modified to represent a p
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
 |days_in_quarantine|int|12|Number of days until and individual is released from quarantine.
-|days_till_quarantine_distribution|list of int/float|[0, 0.5, 0.5]|Zero-index discrete probabiliy distribution of days from an individual being isolated to a contact being quarantined.
-|probability_successful_contact|float|0.75|Probability of an individual being succesfully reached for quarantine.
+|days_till_quarantine_distribution|list of int/float|[0, 0.5, 0.5]|Zero-index discrete probability distribution of days from an individual being isolated to a contact being quarantined.
+|probability_successful_contact|float|0.75|Probability of an individual being successfully reached for quarantine.
 |probability_using_quarantine_resources|float|1/2|Probability of an individual occupying a quarantine bed compared to individually isolating at a private residence.
 
 Once parameters are tuned to your scenario save `parameters.py` in its original location. **Do not delete or rename `parameters.py`.**
 
 ---
 
-### Running a Simulation <a name="run"></a>
+### Running Simulations <a name="run"></a>
 
 Once parameters have been specified in the `SIRQIs/parameters.py` file, simulations can be run by doing the following:
 
@@ -168,7 +168,7 @@ Use popular Python packages such as [Pandas](https://pandas.pydata.org/), [Matpl
 
 ### License
 
-This repo is licensed under the MIT license.
+This repository's contents is licensed under the MIT license.
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
