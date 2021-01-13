@@ -49,8 +49,7 @@ Library |
 [glob](https://docs.python.org/3/library/glob.html) | 
 [os](https://docs.python.org/3/library/os.html) |
 [shutil](https://docs.python.org/3/library/shutil.html) |
-[sys](https://docs.python.org/3/library/sys.html) | 
-[importlib](https://docs.python.org/3/library/importlib.html) |
+[sys](https://docs.python.org/3/library/sys.html) |
 
 Additional modules needed for proper function are listed below:
 
