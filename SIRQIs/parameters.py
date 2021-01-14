@@ -1,7 +1,7 @@
 """Specify simulation parameters for the SIRQIs individual based model.
 
-This module constructs dictionaries of parameters used to change simulatiton
-dyanmics. Parameter explanations and expectations are below:
+This module constructs dictionaries of parameters used to change simulation
+dynamics. Parameter explanations and expectations are below:
 
 Results Parameters:
     - main_results_dir (str): Directory to store model results. Will be
