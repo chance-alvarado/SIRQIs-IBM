@@ -90,7 +90,7 @@ class ResultsWriter():
         copyfile(fetch_path, copy_path)
 
     def write_to_file(self,
-                      susceptible, infected, recovered,
+                      susceptible, infected, infectious, recovered,
                       total_quarantined, quarantined_using_resources,
                       total_isolated, isolated_using_resources):
         """Write current simulation results to file as a CSV."""
@@ -106,15 +106,15 @@ class ResultsWriter():
         # Construct rows of data
         index = list(range(len(susceptible)))
         rows = [row for row in zip(index,
-                                   susceptible, infected, recovered,
-                                   total_quarantined,
+                                   susceptible, infected, infectious,
+                                   recovered, total_quarantined,
                                    quarantined_using_resources,
                                    total_isolated,
                                    isolated_using_resources)]
 
         # Column headers
         headers = ['days',
-                   'susceptible', 'infected', 'recovered',
+                   'susceptible', 'infected', 'infectious', 'recovered',
                    'total_quarantined', 'quarantined_using_resources',
                    'total_isolated', 'isolated_using_resources']
 

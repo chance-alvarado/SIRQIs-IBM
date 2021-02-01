@@ -68,40 +68,23 @@ def plot_batch(batch_dir):
     # Create axes objects
     ax_s = fig.add_subplot(gs[0, 0])
     ax_i = fig.add_subplot(gs[1, 0])
-    ax_r = fig.add_subplot(gs[2, 0])
-    ax_t = fig.add_subplot(gs[0, 1])
+    ax_r = fig.add_subplot(gs[0, 1])
+    ax_inf = fig.add_subplot(gs[2, 0])
     ax_q = fig.add_subplot(gs[1, 1])
     ax_is = fig.add_subplot(gs[2, 1])
 
     # List of plotted axes
-    axes = [ax_s, ax_i, ax_r, ax_q, ax_is]
+    axes = [ax_s, ax_i, ax_r, ax_inf, ax_q, ax_is]
 
     # Set grid on axes
     for ax in axes:
         ax.grid('On', alpha=0.5)
 
-    # Add title
-    ax_t.text(0.5, 0.8, 'Simulated Progression of Infection',
-              fontsize=25, va='top', ha='center')
-
-    # Format general legend
-    t_legend_elements = [
-        Line2D([0], [0], color='k', lw=2, label='Averaged',
-               linestyle=average_kws['ls']),
-        Line2D([0], [0], color='k', lw=2,
-               label='Individual Simulation')]
-
-    # Plot legend
-    ax_t.legend(handles=t_legend_elements, ncol=2, fontsize=14, loc='center',
-                frameon=False)
-
-    # Remove axis on title subplot
-    ax_t.axis('Off')
-
     # Set titles
     ax_s.set_title('Susceptible', **font_kws)
     ax_i.set_title('Infected', **font_kws)
     ax_r.set_title('Recovered', **font_kws)
+    ax_inf.set_title('Infectious', **font_kws)
     ax_q.set_title('Total Quarantined / Quarantined Using Resources',
                    **font_kws)
     ax_is.set_title('Total Isolated / Isolated Using Resources',
@@ -127,11 +110,16 @@ def plot_batch(batch_dir):
     # Number of days simulated
     num_days = len(pd.read_csv(all_simulation_files[0]))
 
+    # Add title
+    fig.suptitle(f'Simulated Progression of Infection (n={num_runs})',
+                 fontsize=25, y=1.03)
+
     # Define list of needed columns
     applicable_columns = [
         'susceptible',
         'infected',
         'recovered',
+        'infectious',
         'total_quarantined',
         'quarantined_using_resources',
         'total_isolated',
@@ -152,6 +140,7 @@ def plot_batch(batch_dir):
         ax_s.plot(df_temp.susceptible, **individual_kws)
         ax_i.plot(df_temp.infected, **individual_kws)
         ax_r.plot(df_temp.recovered, **individual_kws)
+        ax_inf.plot(df_temp.infectious, **individual_kws)
         ax_q.plot(df_temp.total_quarantined, **individual_kws)
         ax_q.plot(df_temp.quarantined_using_resources,
                   **individual_using_resources_kws)
@@ -178,6 +167,7 @@ def plot_batch(batch_dir):
     ax_s.plot(averaged_dict['susceptible'], **average_kws)
     ax_i.plot(averaged_dict['infected'], **average_kws)
     ax_r.plot(averaged_dict['recovered'], **average_kws)
+    ax_inf.plot(averaged_dict['infectious'], **average_kws)
     line_q, = ax_q.plot(averaged_dict['total_quarantined'], **average_kws)
     line_q_r, = ax_q.plot(averaged_dict['quarantined_using_resources'],
                           **average_using_resources_kws)
