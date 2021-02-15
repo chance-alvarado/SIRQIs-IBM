@@ -1,4 +1,5 @@
 """Specify simulation parameters for the SIRQIs individual based model.
+
 This module constructs dictionaries of parameters used to change simulation
 dynamics. Parameter explanations and expectations are below:
 Results Parameters:
@@ -54,7 +55,9 @@ Quarantine Parameters:
     - probability_using_isolation_resources (float): Probability of an
         individual occupying a quarantine bed compared to individually
         isolating at a private residence.
+
 More information can be found in this project's README file.
+
 Explore this repository at:
     https://github.com/chance-alvarado/SIRQIs-IBM/
 Author:
@@ -72,25 +75,25 @@ num_runs = 100
 num_days = 100
 
 # Population parameters
-num_susceptible = 950
-num_infected = 50
+num_susceptible = 9900
+num_infected = 100
 initial_infection_distribution = [0, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7]
 
 # Infection parameters
 infectious_threshold = 6
-probability_infection_given_contact = 0.1
-probability_outside_infection = 0.001
+probability_infection_given_contact = 0.179
+probability_outside_infection = 0.0
 daily_contacts_distribution = [0, 0.5, 0.5]
 
 # Testing parameters
-proportion_tested_daily = 1 / 14
+proportion_tested_daily = 1/7
 detectable_threshold = 4
 days_till_results_distribution = [0, 1]
 
 # Isolation parameters
 days_in_isolation = 8
 eligible_for_retesting = False
-probability_using_isolation_resources = 1 / 2
+probability_using_isolation_resources = 3 / 4
 
 # Quarantine parameters
 days_in_quarantine = 12
