@@ -129,3 +129,30 @@ class ResultsWriter():
             # Write all rows to file
             for row in rows:
                 writer.writerow(row)
+
+    def write_historic_counts(self, historic_dict, num_runs):
+        """Log historic counts of individuals to file."""
+        # Path to write historic counts to
+        historic_path = ''.join([self.batch_dir, '/historic_counts.csv'])
+
+        # Construct rows of data
+        rows = [row for row in zip(range(num_runs),
+                                   historic_dict['ever_infected'],
+                                   historic_dict['ever_isolated'],
+                                   historic_dict['ever_quarantined']
+                                   )]
+
+        # Column headers
+        headers = ['run', 'ever_infected', 'ever_isolated', 'ever_quarantined']
+
+        # Open file
+        with open(historic_path, mode='x') as file:
+            # Define writer
+            writer = csv.writer(file)
+
+            # Write header to file
+            writer.writerow(headers)
+
+            # Write all rows to file
+            for row in rows:
+                writer.writerow(row)
