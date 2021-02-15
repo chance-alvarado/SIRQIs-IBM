@@ -58,7 +58,6 @@ Requirement | Version |
 [Matplotlib](https://matplotlib.org/) | 3.1.3
 [NumPy](https://numpy.org/) | 1.18.1 | 
 [Pandas](https://pandas.pydata.org/) | 1.0.1
-[SciPy](https://www.scipy.org/) | 1.4.1
 
 ---
 
@@ -81,22 +80,22 @@ The population, infection, and testing dynamics can be modified to represent a p
 #### Population Parameters
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
-|num_susceptible|int|950|Number of initial susceptible in simulation.
-|num_infected|int|50|Number of initial infected in simulation.
-|initial_infection_distribution|list of int/float|[0, 0, 1]|Zero-indexed discrete probability distribution of days since infection for initial infected. Elements of initial_infection_distribution should sum to 1.
+|num_susceptible|int|9990|Number of initial susceptible in simulation.
+|num_infected|int|100|Number of initial infected in simulation.
+|initial_infection_distribution|list of int/float|[0, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7]|Zero-indexed discrete probability distribution of days since infection for initial infected. Elements of initial_infection_distribution should sum to 1.
 
 #### Infection Parameters
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
 |infectious_threshold|int/float|6|Minimum log 10 of viral load needed for an individual to be infectious.
-|probability_infection_given_contact|float|0.5|probability of an individual being infected given contact with an infectious individual.
-|probability_outside_infection|float|0.001|Probability of an individual being infected from outside the population.
+|probability_infection_given_contact|float|0.179|probability of an individual being infected given contact with an infectious individual.
+|probability_outside_infection|float|0.0|Probability of an individual being infected from outside the population.
 |daily_contacts_distributions|list of int/float|[0, 0.5, 0.5]|Zero-indexed discrete probability distribution of number of contacts and individual has per day. Elements of daily_contacts_distribution should sum to 1.
 
 #### Testing Parameters
 | Parameter | Type | Example | Description |
 |-----------|------|---------|-------------|
-|proportion_tested_daily|float|1/14|Fraction of eligible individuals to be randomly selected for testing per day.
+|proportion_tested_daily|float|1/7|Fraction of eligible individuals to be randomly selected for testing per day.
 |detectable_threshold|int/float|4| Minimum log 10 of viral load need for an individual to be detected positive.
 |days_till_results|list of float/int|[0, 1]|Zero-indexed discrete probability distribution of days between testing and receiving results (i.e being eligible for retesting or being moved to isolation).
 
@@ -106,7 +105,7 @@ The population, infection, and testing dynamics can be modified to represent a p
 |-----------|------|---------|-------------|
 |days_in_isolation|int|8|Number of days until an individual is released from isolation.
 |eligible_for_retesting|bool|False| Determines if individuals leaving isolation are eligible to be retested.
-|probability_using_isolation_resources|float|1/2|Probability of an individual occupying an isolation bed compared to individually isolating at a private residence.
+|probability_using_isolation_resources|float|3/4|Probability of an individual occupying an isolation bed compared to individually isolating at a private residence.
 
 
 #### Quarantine Parameters
@@ -145,14 +144,23 @@ Upon completion of a run, a number-suffixed folder specified by the **main_resul
   
 - `run_#####.csv`
   - Each run file represents the result of a single simulation. Each row represents the number of individuals present in each state (column) at the specified day. The number of run files present is dependent on the **num_runs** parameter in the `parameters.py` file.
+
+- `historic_counts.csv`
+  - A count of the total individuals ever infected, isolated, and quarantined for each run for the specified batch.
   
 - `summary_plot.png`
   - A simple plot summarizing the number of individuals in each state by day. Individual trajectories are plotted with a lower opacity while the average trajectory among all situations is emphasized. Use this plot to get a rough idea of the results before more in-depth analyses are conducted.
-  
+
 <br />
 <p align="center">
   <img src="/SIRQIs/resources/media/example_run.png"><br>
   <b>An example dataframe showing the results of a single simulation</b><br>
+</p>
+<br />
+<br />
+<p align="center">
+  <img src="/SIRQIs/resources/media/example_history.png"><br>
+  <b>An example dataframe showing historic counts for a batch of simulations</b><br>
 </p>
 <br />
 <br />
