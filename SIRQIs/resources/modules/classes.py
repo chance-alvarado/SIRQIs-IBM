@@ -82,7 +82,6 @@ class Individual():
         # Define isolation timer and flag
         self.to_be_isolated = False
         self.using_isolation_resources = False
-        self.days_till_isolation = 0
         self.isolation_timer = 0
 
         # Define quarantine timer and flags
@@ -616,7 +615,7 @@ class Quarantine():
         subpopulation = set()
 
         # Find specified source
-        if from_subpopulation:
+        if not isinstance(from_subpopulation, bool):
             source = from_subpopulation
         else:
             source = self.members
@@ -628,7 +627,6 @@ class Quarantine():
                     else False for key in flag_dict.keys()]):
                 subpopulation.add(individual)
 
-        # Return subpopulation
         return subpopulation
 
     def log_state(self):
@@ -648,7 +646,7 @@ class Quarantine():
                          'recovered': True,
                          'testable': True,
                          'awaiting_results': False,
-                         'days_till_results': 0,
+                         'to_be_quarantined': False,
                          'to_be_transferred': True,
                          'quarantine_timer': self.days_in_quarantine,
                          'ever_quarantined': True
@@ -697,10 +695,12 @@ class Quarantine():
             individual.set_flags(isolated_dict)
 
             # Find days till transfer
-            days_till_transfer = max(1, individual.days_till_isolation)
+            days_till_transfer = max(1, individual.days_till_results)
 
             # Set transfer date
-            individual.days_till_transfer = days_till_transfer
+            individual.set_flags({
+                'days_till_transfer': days_till_transfer,
+                'days_till_results': 0})
 
         # Fetch individuals who may be eligible to transfer
         individuals_to_check_for_transfer = self.fetch_subpopulation(
@@ -825,7 +825,7 @@ def simulate_time_step(general_population, quarantine, isolation):
     quarantine.admit_to_quarantine(individuals_to_be_quarantined)
 
     # Progress quarantine
-    (individuals_to_be_tranferred,
+    (individuals_to_be_transferred,
      individuals_discharged_from_quarantine) = quarantine.progress_quarantine()
 
     # Progress isolation
@@ -833,7 +833,7 @@ def simulate_time_step(general_population, quarantine, isolation):
 
     # Find all individuals being admitted to isolation
     all_individuals_being_isolated = individuals_to_be_isolated.union(
-        individuals_to_be_tranferred)
+        individuals_to_be_transferred)
 
     # Admit individuals to isolation
     isolation.admit_to_isolation(all_individuals_being_isolated)
